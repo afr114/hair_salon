@@ -9,4 +9,10 @@ describe(Client) do
       expect(test_name.name()).to(eq("Pewter Pompoms"))
     end
   end
+
+  describe('.all') do
+    it('is empty at first') do
+      expect(Client.all()).to(eq([]))
+    end
+  end
 end #ends Client spec
