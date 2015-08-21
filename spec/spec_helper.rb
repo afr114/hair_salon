@@ -1,7 +1,7 @@
 require('rspec')
-require('book')
+require('client')
 require('pg')
-require('patron')
+require('stylist')
 
 DB = PG.connect({:dbname => "hair_salon_test"})
 RSpec.configure do |config|
