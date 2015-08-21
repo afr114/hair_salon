@@ -15,4 +15,13 @@ describe(Client) do
       expect(Client.all()).to(eq([]))
     end
   end
+
+  describe('#save') do
+    it('lets you save to the database') do
+      test_client = Client.new({:name => "Paxter Pendergrass", :id => nil})
+      test_client.save()
+      expect(Client.all()).to(eq([test_client]))
+    end
+  end
+
 end #ends Client spec

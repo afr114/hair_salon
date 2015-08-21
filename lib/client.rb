@@ -17,4 +17,13 @@ class Client
     clients
   end
 
+  def save
+    result = DB.exec("INSERT INTO clients (name) VALUES ('#{@name}') RETURNING id;")
+    @id = result.first().fetch("id").to_i()
+  end
+
+def ==(another_client)
+  self.name().==(another_client.name()).&(self.id().==(another_client.id()))
+end
+
 end #ends class
