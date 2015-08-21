@@ -3,7 +3,7 @@ class Client
 
   define_method(:initialize) do |attributes|
     @name = attributes.fetch(:name)
-    @id = attributes.fetch(:id)
+    @id = attributes.fetch(:id, nil)
   end
 
   def self.all
@@ -46,5 +46,5 @@ class Client
     end
     found_client
   end
-  
+
 end #ends class

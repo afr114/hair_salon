@@ -3,7 +3,7 @@ class Stylist
 
   define_method(:initialize) do |attributes|
     @name = attributes.fetch(:name)
-    @id = attributes.fetch(:id)
+    @id = attributes.fetch(:id, nil)
   end
 
   def self.all
