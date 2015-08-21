@@ -22,8 +22,15 @@ class Client
     @id = result.first().fetch("id").to_i()
   end
 
-def ==(another_client)
-  self.name().==(another_client.name()).&(self.id().==(another_client.id()))
-end
+  def ==(another_client)
+    self.name().==(another_client.name()).&(self.id().==(another_client.id()))
+  end
+
+
+  def update(attr)
+    @name = attr.fetch(:name)
+    @id = self.id()
+    DB.exec("UPDATE clients SET name = '#{@name}' WHERE id = #{@id};")
+  end
 
 end #ends class

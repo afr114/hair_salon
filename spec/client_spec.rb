@@ -24,4 +24,12 @@ describe(Client) do
     end
   end
 
+  describe('#update') do
+    it ('lets you update clients in the database') do
+      client = Client.new({:name => "Priscilla Prettydress", :id => nil})
+      client.save()
+      client.update({:name => "Pending Poopoodew", :id => nil})
+      expect(client.name()).to(eq("Pending Poopoodew"))
+    end
+  end
 end #ends Client spec
