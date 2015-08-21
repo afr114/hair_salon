@@ -32,4 +32,14 @@ describe(Client) do
       expect(client.name()).to(eq("Pending Poopoodew"))
     end
   end
+
+  describe("#delete") do
+    it('deletes a name from the database') do
+      client = Client.new({:name => "Robert Redbear", :id => nil})
+      client.save()
+      client.delete()
+      expect(Client.all()).to(eq([]))
+    end
+  end
+
 end #ends Client spec
