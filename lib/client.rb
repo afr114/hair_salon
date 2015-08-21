@@ -46,4 +46,5 @@ class Client
     end
     found_client
   end
+  
 end #ends class
