@@ -1,0 +1,28 @@
+<form action="/staff/<%= @staff.id() %>" method="post">
+  <input name="_method" type="hidden" value="patch">
+  <label for="staff">Update staff info</label>
+  <br>
+  <input id="name" name="name" type="text" placeholder="Update name here">
+  <button type="submit">Update</button>
+</form>
+
+<form action='/staff/<%= @staff.id() %>' method='post'>
+  <input name='_method' type='hidden' value='delete'>
+
+  <button class='btn-danger' type='submit'>Delete</button>
+</form>
+
+<br>
+<p> Add clients to current staff member:</p>
+
+<form action="/staff/:id" method="post">
+  <label for="name">Select client</label>
+  <select id='client_id' name='client_id' type='text'>
+    <% @clients.each() do |client| %>
+      <option value="<%= client.id()%>"> <%= client.name() %> </option>
+    <% end %>
+  </select>
+  <button class='btn-primary' type='submit'>Add client</button>
+</form>
+
+<a href="/staff_members">Back to Employee Page</a>

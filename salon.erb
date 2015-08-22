@@ -1,0 +1,60 @@
+<p>Add a new Employee</p>
+
+<center>
+  <h1>Add Staff</h1>
+</center>
+<form action='/staff_members' method='post'>
+  <div class='form-group'>
+    <label for="name">Please enter the new employee's name:</label>
+    <input id="name" name="name" placeholder="name" type="text">
+  </div>
+  <button type="submit" class="btn-success">Add</button>
+</form>
+
+<p> Add clients to any Staff:</p>
+
+<form action="/clients" method="post">
+  <label for="staff_id">Select a staff member</label>
+<select id='staff_id' name='staff_id' type='text'>
+  <% @stylists.each() do |staff| %>
+    <option value="<%= staff.id()%>"> <%= list.name() %> </option>
+  <% end %>
+</select>
+  <label for="name">Please enter the new client's name:</label>
+  <input id="name" name="name" placeholder="name" type="text">
+  </div>
+  <button type="submit" class="btn-success">Add</button>
+  </form>
+
+
+<% if @stylists.any?() %>
+<p>Click on a staff member to see their clients:</p>
+
+<ul>
+  <% @stylists.each do |staff| %>
+  <li><a href="/staff_members/<%= staff.id() %>"><%= staff.name() %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no employee's yet at Medici Hair Salon</p>
+<% end %>
+
+<% if @clients.any? %>
+<ol>
+  <% @clients.each() do |client| %>
+  <li><b><a href="/client/<%= client.id() %>"><%= client.name() %></a><br></b></li>
+  <% end %>
+</ol>
+
+<p> Add clients to current staff member:</p>
+
+<form action="/staff/:id" method="post">
+  <label for="name">Select client</label>
+  <select id='client_id' name='client_id' type='text'>
+    <% @clients.each() do |client| %>
+      <option value="<%= client.id()%>"> <%= client.name() %> </option>
+    <% end %>
+  </select>
+<br>
+  <button type="submit" class="btn-success">Add</button>
+</form>

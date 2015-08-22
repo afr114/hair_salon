@@ -19,6 +19,7 @@ get('/staff_members') do
 end
 
 get('/staff_form') do
+  @stylists = Stylist.all()
   erb(:staff_form)
 end
 
@@ -30,6 +31,7 @@ end
 
 get('/staff/:id') do
   @staff = Stylist.find(params.fetch("id").to_i())
+  @clients = Client.all()
   erb(:staff)
 end
 
@@ -43,8 +45,14 @@ end
 delete('/staff/:id') do
   @staff = Stylist.find(params.fetch("id").to_i())
   @staff.delete()
-  # @books = Book.all()
   redirect('/staff_members')
+end
+
+post('staff/:id') do
+  client = Client.new({:name => params.fetch("name")})
+  client.save()
+  @clients = client
+  redirect('/success')
 end
 
 get('/clients') do
@@ -77,6 +85,5 @@ end
 delete('/client/:id') do
   @client = Client.find(params.fetch("id").to_i())
   @client.delete()
-  # @books = Book.all()
   redirect('/clients')
 end
